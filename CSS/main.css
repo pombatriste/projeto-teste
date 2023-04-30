@@ -9,6 +9,7 @@ body{
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 1em;
     background: rgb(213, 213, 213) url(../Imagens/fundo.png);
+    overflow-x: hidden;
 }
 
 a{
@@ -51,25 +52,10 @@ time{
 
 /*--------------HEADER STYLES-------------*/
 
-header{
-    background: rgb(40, 40, 40) url(../Imagens/Banner.png) repeat-x;
-    height: 175px;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    align-items: center;
-}
-
-
-header #logo{
-    background: url(../Imagens/Logo.png) no-repeat left center;
-    width: 200px;
-    height: 100px;
-    padding: 25px 15px;
-    margin-left:25px ;
-    text-indent: -900000px;
-
+#logo{
+    font-size: 24px;
+    text-transform: uppercase;
+    letter-spacing: 4px;
 }
 
 
@@ -78,23 +64,85 @@ header #logo{
 
 /*------------------NAVBAR STYLES----------------*/
 
-nav a:link, nav a:visited, nav a:active{
+nav{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 8vh;
+    background: #353535;
+}
+
+nav a{
+    transition: 0.3s;
     color: #FFF;
-    padding: 10px;
 }
 
 nav a:hover{
-    background: rgb(70, 70, 70)
+    opacity: 0.7;
 }
 
-nav ul{
+.nav-list{
+
+    list-style: none;
     display: flex;
-    align-items: flex-end;
-    flex-wrap: wrap;
 }
 
-nav li{
-    margin: 10px;
+.nav-list li{
+    letter-spacing: 3px;
+    margin-left: 32px;
+}
+
+.mobile-menu{
+    display: none;
+    cursor: pointer;
+}
+
+.mobile-menu div{
+    width: 32px;
+    height: 2px;
+    background: #FFF;
+    margin: 8px;
+}
+
+@media (max-width: 999px) {
+    .nav-list{
+        position: absolute;
+        top: 8vh;
+        right: 0;
+        width: 50vw;
+        height: 92vh;
+        background: #353535;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in;
+    }
+
+    .nav-list li{
+        margin-left: 0;
+        opacity: 0;
+    }
+
+    .mobile-menu{
+        display: block;
+    }
+}
+
+.nav-list.active{
+    transform: translateX(0);
+}
+
+@keyframes navLinkFade {
+    from{
+            opacity: 0;
+            transform: translateX(50px);
+    }
+
+    to{
+            opacity: 1;
+            transform: translateX(0);
+    }
 }
 
 /*------------------NAVBAR STYLES-----------------*/
@@ -103,10 +151,11 @@ nav li{
 
 main{
     display: flex;
+    height: 92vh;
 }
 
 article{
-    border: 1px solid red;
+
     height: 100%;
     width: 75%;
     display: flex;
@@ -114,7 +163,7 @@ article{
 }
 
 .postagem{
-    border: 1px solid red;
+
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
@@ -125,7 +174,7 @@ article{
 .postagem img{
     display: flex;
     align-items: center;
-    border: 1px solid red;
+
     max-width: 400px;
     min-width: 100px;
     height: 200px;
@@ -139,7 +188,7 @@ article{
 /*--------------ASIDE STYLES------------------*/
 
 aside{
-    border: 1px solid red;
+
     height: 100%;
     width: 30%;
 
@@ -180,17 +229,8 @@ aside img{
 footer{
     background: rgb(40, 40, 40) url(../Imagens/Banner.png);
     width: 100%;
-    height: 125px;
+    height: 8vh;
     display: flex;
-}
-
-footer img{
-    justify-content: flex-start;
-    height: 100px;
-    width: 100px;
-    padding: 10px;
-    border: none;
-    margin-left: 15px;
 }
 
 footer ul{
